@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.empire_of_science.joao.coloreaters2"
+    android:versionCode="4"
+    android:versionName="3.1">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
+            <meta-data
+                android:name="com.google.android.gms.version"
+                android:value="@integer/google_play_services_version" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LevelMenuActivity"
+            android:label="@string/title_activity_level_menu" />
+        <activity
+            android:name=".GameActivity"
+            android:label="@string/title_activity_game" />
+        <activity
+            android:name=".WinActivity"
+            android:label="@string/title_activity_win" />
+        <activity
+            android:name=".LoseActivity"
+            android:label="@string/title_activity_lose" />
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/title_activity_about" />
+        <activity
+            android:name=".HelpActivity"
+            android:label="@string/title_activity_help" />
+        <activity
+            android:name=".MainLevelMenuActivity"
+            android:label="@string/title_activity_main_level_menu"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SettingsActivity"></activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,53 @@
+Este pode ser resolvido em 2:
+yyyyyy
+rrrrry
+Y   ry
+     R
+
+Este pode ser resolvido em 1:
+yyRY
+ rYR
+yyRY
+
+Este pode ser resolvido em 4:
+yyGRbb
+rrBYgg
+
+Este pode ser resolvido em 3:
+YGRB
+rybg
+
+Este pode ser resolvido em 2 e não é muito difícil!
+yyyyyy
+rrrryy
+ YryRy
+  rryy
+
+Este pode ser resolvido em 3:
+YRy
+rbr
+byB
+
+Este pode ser resolvido em 5.
+bbGRYgg
+yyRBGrr
+
+Este em 8 ou menos.
+
+  YG
+  BR
+RBygyg
+GYbrbr
+  ygRB
+  brGY
+
+ 
+
+
+
+
+
+
+
+
+

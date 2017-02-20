@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/large_logo"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Color Eaters!"
+        android:textSize="50sp"
+        android:textStyle="italic" />
+
+    <Button android:text="@string/play" android:layout_height="wrap_content" android:layout_width="match_parent"
+        android:onClick="go" android:textSize="50sp"/>
+
+    <Button
+        android:text="@string/how_to_play"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toHelp" android:textSize="50sp"/>
+
+    <Button
+        android:text="@string/about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toAbout" android:textSize="50sp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings"
+        android:onClick="toSettings" android:textSize="50sp"/>
+</LinearLayout>
