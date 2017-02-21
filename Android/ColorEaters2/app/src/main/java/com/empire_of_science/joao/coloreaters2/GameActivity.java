@@ -171,4 +171,16 @@ public class GameActivity extends Activity {
         int id = item.getItemId();
         return (id == R.id.action_settings)||super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        gameView.resume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        gameView.pause();
+    }
 }

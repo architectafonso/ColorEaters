@@ -2,8 +2,6 @@ package com.empire_of_science.joao.coloreaters2;
 
 import android.os.Bundle;
 
-import com.color.eaters.GameInitialStateInterface;
-
 /**
  * Created by João on 07/12/2016.
  *

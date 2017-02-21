@@ -5,19 +5,21 @@ import android.graphics.Canvas;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.View;
-
-import com.color.eaters.GameSystem;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 
 /**
  * Requirements:
  * The activity that hosts this view must be an GameActivity or one that extends it.
  * It also needs to  set the numberOfMoves, the level pieces and animationOn.
  */
-public class GameView extends View {
+public class GameView extends SurfaceView implements Runnable {
 
     private final ColorEatersCallbacks callbacks = new ColorEatersCallbacks(this);
 
+    Thread drawThread = null;
+    SurfaceHolder holder;
+    boolean isDrawing = false;
 
 
     /**
@@ -70,6 +72,7 @@ public class GameView extends View {
         // Sets the GameDrawer object in to draw the board and its pieces.
         gameDrawer = new GameDrawer(activity);
         sounds = GameSounds.getInstance(activity);
+        holder = getHolder();
     }
 
     public GameSystem gameSystem;
@@ -118,5 +121,37 @@ public class GameView extends View {
                 gameSystem.animate_DrawGame_CheckRedrawIsNeeded( 0, 0, canvas.getWidth(), canvas.getHeight() );
         gameDrawer.canvas = null;
         if (redrawIsNeeded) invalidate();
+    }
+
+    @Override
+    public void run() {
+        while (isDrawing){
+            if(!holder.getSurface().isValid()){
+                continue;
+            }
+            Canvas canvas = holder.lockCanvas();
+            canvas.drawARGB(255, 0, 100, 0);
+            holder.unlockCanvasAndPost(canvas);
+
+        }
+    }
+
+    public void pause() {
+        isDrawing = false;
+        while (true){
+            try{
+                drawThread.join();
+            }catch (InterruptedException e){
+                e.printStackTrace();
+            }
+            break;
+        }
+        drawThread = null;
+    }
+
+    public void resume() {
+        isDrawing = true;
+        drawThread = new Thread(this);
+        drawThread.start();
     }
 }

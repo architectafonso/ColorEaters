@@ -1,7 +1,5 @@
 package com.empire_of_science.joao.coloreaters2;
 
-import com.color.eaters.ColorEatersInterface;
-
 /**
  * Created by João on 16/12/2016.
  */
