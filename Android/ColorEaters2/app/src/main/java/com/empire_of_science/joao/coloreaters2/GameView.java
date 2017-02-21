@@ -103,26 +103,6 @@ public class GameView extends SurfaceView implements Runnable {
         return true;
     }
 
-
-
-    /**
-     * Calls the animation object to perform a frame if an animation is happening,
-     * draws the current gameOverState of the gameSystem, sets the right number of moves in the activity and
-     * invalidates if the animation requires it.
-     * @param canvas The canvas on which the board will be drawn.
-     */
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-
-        // Draws the current gameOverState of the gameSystem.
-        gameDrawer.canvas = canvas;
-        boolean redrawIsNeeded =
-                gameSystem.animate_DrawGame_CheckRedrawIsNeeded( 0, 0, canvas.getWidth(), canvas.getHeight() );
-        gameDrawer.canvas = null;
-        if (redrawIsNeeded) invalidate();
-    }
-
     @Override
     public void run() {
         while (isDrawing){
@@ -130,9 +110,12 @@ public class GameView extends SurfaceView implements Runnable {
                 continue;
             }
             Canvas canvas = holder.lockCanvas();
-            canvas.drawARGB(255, 0, 100, 0);
+            // Draws the current gameOverState of the gameSystem.
+            gameDrawer.canvas = canvas;
+            boolean redrawIsNeeded =
+                    gameSystem.animate_DrawGame_CheckRedrawIsNeeded( 0, 0, canvas.getWidth(), canvas.getHeight() );
+            //gameDrawer.canvas = null;
             holder.unlockCanvasAndPost(canvas);
-
         }
     }
 

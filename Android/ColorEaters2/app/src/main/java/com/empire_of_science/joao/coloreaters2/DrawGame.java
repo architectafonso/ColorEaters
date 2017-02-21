@@ -28,7 +28,7 @@ class DrawGame {
         drawCake();
         drawEaters();
         // Also changes for the number of moves in the activity.
-        gameSystem.callbacks.setNumberOfMoves(gameSystem.board.movesLeft);
+//        gameSystem.callbacks.setNumberOfMoves(gameSystem.board.movesLeft);
         gameSystem.callbacks.terminateDraw();
 
 
