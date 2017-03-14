@@ -30,8 +30,8 @@
     <string name="level_package">Packet de Niveaux </string>
 
     <!-- Help -->
-    <string name="help1">Touchez un gâteau ou glouton pour le sélectionner</string>
-    <string name="help2">Touchez un lieu pour déplacer la pièce sélectionnée, vous pouvez déplacer un gâteau ou un glouton dans un autre lieu juste à côté (pas diagonales),  si le lieu est occupé las pièces échange des lieux</string>
+    <string name="help1">Faites glisser un gâteau ou glouton</string>
+    <string name="help2">Vous pouvez le déplacer vers une cellule juste à côté (pas en diagonale),  si le lieu est occupé las pièces échange des lieux</string>
     <string name="help3">Les gloutons mangent tout le gâteau de leur couleur qui est dans un groupe qu\'ils touchent</string>
     <string name="help4">Le but est de manger tout le gâteau dans le nombre de coups disponibles</string>
     <string name="help5">La pièce "X" ne peut être sélectionné ou déplacé</string>

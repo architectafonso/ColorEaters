@@ -30,8 +30,8 @@
     <string name="level_package">Pacote de Níveis </string>
 
     <!-- Help -->
-    <string name="help1">Toca num bolo ou um comilão para o selecionar</string>
-    <string name="help2">Toca numa célula para mover a peça selecionada\nPodes mover um comilão ou o bolo para uma célula mesmo ao lado (sem diagonais), se tiver ocupada, trocam de lugar</string>
+    <string name="help1">Arrasta um bolo ou um comilão para o mover.</string>
+    <string name="help2">Podes movê-lo para uma célula mesmo ao lado, se já estiver lá um comilão ou bolo, os dois trocam de lugar!</string>
     <string name="help3">Quando um comilão fica junto a um grupo de bolos (todos encostados uns aos outros) da sua cor, come esses bolos todos</string>
     <string name="help4">O objetivo é comer o bolo todo no número de movimentos disponíveis</string>
     <string name="help5">As peças vermelhas X não se movem, tens que as contornar!</string>

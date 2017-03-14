@@ -30,8 +30,8 @@
 
 
     <!-- Help -->
-    <string name="help1">Select one of the eaters or cakes by touching it</string>
-    <string name="help2">Touch a cell to make your selected piece move there, you can move an eater or cake to a place right next (no diagonals), if it is occupied, the pieces will swap</string>
+    <string name="help1">Drag an eater or cake to move it</string>
+    <string name="help2">You can move it to a cell right next to it (no diagonals), if it is occupied then you will swap the two objects!</string>
     <string name="help3">The eaters will eat any continuous group of cakes of their color they touch</string>
     <string name="help4">Your goal is to eat all the cake in the given number of moves</string>
     <string name="help5">The red X can\'t be moved, go around it!</string>
