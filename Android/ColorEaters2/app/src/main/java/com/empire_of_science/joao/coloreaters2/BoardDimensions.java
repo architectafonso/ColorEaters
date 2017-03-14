@@ -1,6 +1,9 @@
 package com.empire_of_science.joao.coloreaters2;
 
 
+import android.graphics.Canvas;
+import android.graphics.Rect;
+
 /**
  * Created by João on 19/11/2016.
  * Contains all of the information about the canvas coordinates of different points of the board
@@ -11,8 +14,6 @@ class BoardDimensions {
 
     private int lastCanvasWidth;
     private int lastCanvasHeight;
-    private int lastCanvasX;
-    private int lastCanvasY;
 
     /**
      * This arrays has the x coordinates of the sides of the board and cell lines.
@@ -38,28 +39,33 @@ class BoardDimensions {
      */
     private float scale;
 
+    /**
+     * The size of the side of 1 of the 36 cells of the board.
+     */
     private int cellSide;
 
-    void setDimensions(Rectangle canvas){
+    /**
+     * Sets the dimensions from canvas, only if the canvas have changed since last time.
+     * @param canvas The canvas stuff will be drawn to.
+     */
+    void setDimensions(Canvas canvas){
         // Checks if there was any change since last setting of the dimensions.
-        if (canvas.width == lastCanvasWidth && canvas.height == lastCanvasHeight
-                && canvas.x == lastCanvasX && canvas.y == lastCanvasY) return;
-        lastCanvasWidth = canvas.width;
-        lastCanvasHeight = canvas.height;
-        lastCanvasX = canvas.x;
-        lastCanvasY = canvas.y;
+        if (canvas.getWidth() == lastCanvasWidth && canvas.getHeight() == lastCanvasHeight) return;
+        lastCanvasWidth = canvas.getWidth();
+        lastCanvasHeight = canvas.getHeight();
+
 
         // Determines the boardSide and cellSide. Considers the possibility of the drawing part of
         // the canvas not to start at 0,0.
-        if(canvas.height < canvas.width) {
-            boardSide = canvas.height;
-            xCoordinates[0]=((canvas.width -boardSide)/2) + canvas.x;
-            yCoordinates[0]= canvas.y;
+        if(canvas.getHeight() < canvas.getWidth()) {
+            boardSide = canvas.getHeight();
+            xCoordinates[0]=((canvas.getWidth() -boardSide)/2);
+            yCoordinates[0]= 0;
         }
         else {
-            boardSide = canvas.width;
-            xCoordinates[0]= canvas.x;
-            yCoordinates[0]= ((canvas.height-boardSide)/2) + canvas.y;
+            boardSide = canvas.getWidth();
+            xCoordinates[0]= 0;
+            yCoordinates[0]= ((canvas.getHeight()-boardSide)/2);
         }
 
         cellSide = boardSide / 6;
@@ -76,31 +82,45 @@ class BoardDimensions {
 
     }
 
-    Rectangle  getEntireBoardRect() {
-        return new Rectangle(xCoordinates[0], yCoordinates[0], boardSide, boardSide);
-    }
-
-    Rectangle getCellRect(int x, int y) {
-        return new Rectangle (xCoordinates[x],  yCoordinates[y], cellSide,  cellSide);
-    }
-
-    Rectangle getGraphicsCoordinatesRect(int graphicsX, int graphicsY) {
-        int left = xCoordinates[0] +  (int)(scale * graphicsX);
-        int top = yCoordinates[0] +  (int)(scale * graphicsY);
-        return new Rectangle(left, top, cellSide, cellSide);
+    Rect getEntireBoardRect() {
+        return new Rect(xCoordinates[0], yCoordinates[0], xCoordinates[6], yCoordinates[6]);
     }
 
     /**
-     * Returns the cells at canvas coordinates in the array at the result
-     * parameter and returns false if the touch didn't happen on a cell.
-     * @param x The x coordinate on the canvas.
-     * @param y The y coordinate on the canvas.
-     * @param result Reference to the array that will get the cell coordinates, [0] = x and [1] = y.
-     * @return True if canvas coordinates correspond to a cell and false otherwise.
+     * NOT IN USE AS THERE IS NO SELECTION RIGHT NOW; PRESERVED BECAUSE MIGHT EXIST AGAIN.
+     * @param x Cell x coordinate.
+     * @param y Cell y coordinate.
+     * @return The cell rect.
      */
-    boolean getWhichCellAtCanvasCoordinates(float x, float y, int[] result){
+    Rect getCellRect(int x, int y) {
+        return new Rect (xCoordinates[x],  yCoordinates[y], xCoordinates[x+1],  yCoordinates[y+1]);
+    }
+
+    /**
+     * Gets the rect where to drawn in the canvas a certain piece from the piece's graphics coordinates.
+     * @param graphicsX Piece's graphicsX.
+     * @param graphicsY Piece's graphicsY.
+     * @return The rect where to draw a piece.
+     */
+    Rect getGraphicsCoordinatesRect(int graphicsX, int graphicsY) {
+        int left = xCoordinates[0] +  (int)(scale * graphicsX);
+        int top = yCoordinates[0] +  (int)(scale * graphicsY);
+        return new Rect(left, top, left + cellSide, top + cellSide);
+    }
+
+    /**
+     * Gets the coordinates of the cell that has the specified point in canvas coordinates.
+     * The result is in the form of an array.
+     * @param x The canvas x coordinate.
+     * @param y The canvas y coordinate.
+     * @return Array with cell coordinates, x = [0], y = [1].
+     * @throws GameException If the touch didn't happen on a cell.
+     */
+    int[] getWhichCellAtCanvasCoordinates(float x, float y) throws GameException{
         Boolean touchOnCellX = false;
         Boolean touchOnCellY = false;
+
+        int[] result = new int[2];
 
         for(int testX = 0; testX < 6; testX++) {
             if (x > xCoordinates[testX] && x < xCoordinates[testX + 1]) {
@@ -116,7 +136,11 @@ class BoardDimensions {
             }
         }
 
-        return (touchOnCellX) && (touchOnCellY);
+        if(!(touchOnCellX) && (touchOnCellY)){
+            throw new GameException("No cell was touched");
+        }
+
+        return result;
     }
 
     int getXOfVerticalBorders(int line) {
@@ -141,5 +165,34 @@ class BoardDimensions {
 
     int boardRight() {
         return xCoordinates[6];
+    }
+
+
+    /**
+     * Returns an x graphics coordinate, that goes from 0 to 1000, from the actual Android canvas
+     * coordinate.
+     * @param canvasX The coordinate in the canvas.
+     * @return Graphics x coordinate.
+     */
+    int graphicsXFromCanvasCoordinates(int canvasX){
+        if (canvasX < xCoordinates[0]) return 0;
+        if (canvasX > xCoordinates[6]) return 1000;
+        int size = xCoordinates[6] - xCoordinates[0];
+        int displacement = canvasX - xCoordinates[0];
+        return (displacement * 1000) / size;
+        
+    }
+    /**
+     * Returns an Y graphics coordinate, that goes from 0 to 1000, from the actual Android canvas
+     * coordinate.
+     * @param canvasY The coordinate in the canvas.
+     * @return Graphics Y coordinate.
+     */
+    int graphicsYFromCanvasCoordinates(int canvasY) {
+        if (canvasY < yCoordinates[0]) return 0;
+        if (canvasY > yCoordinates[6]) return 1000;
+        int size = yCoordinates[6] - yCoordinates[0];
+        int displacement = canvasY - yCoordinates[0];
+        return (displacement * 1000) / size;
     }
 }

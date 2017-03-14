@@ -10,7 +10,7 @@ import android.widget.Button;
 /**
  * Activity that allows player to chose the level package that contains the wanted level.
  */
-public class MainLevelMenuActivity extends AppCompatActivity {
+public class Activity_MainLevelMenuActivity extends AppCompatActivity {
 
     /**
      * When starts has to set the title.
@@ -32,7 +32,7 @@ public class MainLevelMenuActivity extends AppCompatActivity {
      */
     public void chooseLevel(View view){
         int LevelPackage =  Integer.parseInt(((String)((Button)view).getText()));
-        Intent intent = new Intent(this, LevelMenuActivity.class);
+        Intent intent = new Intent(this, Activity_LevelMenuActivity.class);
         intent.putExtra("levelPackage", LevelPackage);
         startActivity(intent);
     }

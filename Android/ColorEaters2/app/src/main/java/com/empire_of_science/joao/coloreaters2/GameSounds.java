@@ -26,7 +26,7 @@ class GameSounds {
      * @param activity An activity to have access to resources.
      * @return GameSounds object.
      */
-    static GameSounds getInstance(GameActivity activity) {
+    static GameSounds getInstance(Activity_GameActivity activity) {
         // If there's no instance, creates it.
         if (ourInstance == null)
             ourInstance = new GameSounds(activity);
@@ -72,7 +72,7 @@ class GameSounds {
      * @param activity Activity reference to access SoundPool.
      */
     @SuppressWarnings("deprecation")
-    private GameSounds(GameActivity activity) {
+    private GameSounds(Activity_GameActivity activity) {
         soundPool = new SoundPool(4, AudioManager.STREAM_MUSIC, 100);
         eatSound = soundPool.load(activity, R.raw.eatingsound, 1);
         movingSound = soundPool.load(activity, R.raw.movesound, 1);

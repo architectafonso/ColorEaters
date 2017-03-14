@@ -8,10 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-public class GameActivity extends Activity {
+public class Activity_GameActivity extends Activity {
 
 
-
+    /**
+     * The view that shows the game.
+     */
     private GameView gameView;
 
     /**
@@ -25,15 +27,9 @@ public class GameActivity extends Activity {
     private int levelPackage;
 
 
-    private void getTheGameView() {
-        gameView = (GameView) findViewById(R.id.gameV);
-    }
     /**
      * This is the method that starts the process of making the gameSystem.
-     * Will then call the GameView, that will call the gameSystem library to start the gameSystem.
      *
-     * The purpose of this method is to gather information, create a GameInitializer and
-     * call the view's initialize method with that GameInitializer.
      * @param savedInstanceState Game saved from rotation.
      */
     @Override
@@ -41,27 +37,31 @@ public class GameActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        getTheGameView();
+        gameView = (GameView) findViewById(R.id.gameV);
 
         // Sets the ad banner.
         AdControl.setAdd(this);
 
-        GameInitializer gameInitializer;
 
+        boolean hasSaved = true;
+        if (savedInstanceState == null) hasSaved = false;
+        if (savedInstanceState != null && savedInstanceState.getBoolean("fromMenu", false)){
+            hasSaved = true;
+        }
         // If it's getting the level first time, gets level from Intent, using loadLevel.
-        if(savedInstanceState == null){
+        if(!hasSaved){
             level = getIntent().getExtras().getInt("level");
             levelPackage = getIntent().getExtras().getInt("levelPackage");
-            gameInitializer = new GameInitializer(levelPackage, level);
+            gameView.initialize(levelPackage, level);
         }
         // If the gameSystem has been rotated or interrupted, gets info from
         // Bundle using RotationController.
         else
         {
-            gameInitializer = new GameInitializer(savedInstanceState);
+            gameView.initialize(savedInstanceState, gameView);
+            level = savedInstanceState.getInt("level");
+            levelPackage = savedInstanceState.getInt("levelPackage");
         }
-
-        gameView.initialize(gameInitializer);
 
         // Sets the number of moves to display. Actual ID depends on the layout, could be
         // moves_left or moves_left_large_3, because in tablets in landscape the number of moves
@@ -74,11 +74,12 @@ public class GameActivity extends Activity {
         lev.setText(s + " " + levelPackage + "/" + level);
 
         // Sets the animation on or off.
-        gameView.animationOn = PreferenceControl.getAnimationOnOff(this);
+        // CURRENTLY ANIMATION IS ALWAYS ON
+        //gameView.animationOn = PreferenceControl.getAnimationOnOff(this);
     }
 
     /**
-     * This method has to save the gameOverState of the gameSystem for when the device is rotated.
+     * This method has to save the state of the game for when the device is rotated.
      *
      * @param outState The bundle caring the gameSystem gameOverState info.
      */
@@ -103,7 +104,7 @@ public class GameActivity extends Activity {
      */
     @Override
     public void onBackPressed(){
-        Intent intent = new Intent(this, LevelMenuActivity.class);
+        Intent intent = new Intent(this, Activity_LevelMenuActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("levelPackage", levelPackage);
         startActivity(intent);
@@ -111,22 +112,22 @@ public class GameActivity extends Activity {
 
 
     /**
-     * Called by the view when the user wins the gameSystem.
+     * Called when the user wins the game.
      * Also called from onSaveInstanceState.
      */
     public void win(){
-        Intent intent = new Intent(this, WinActivity.class);
+        Intent intent = new Intent(this, Activity_WinActivity.class);
         intent.putExtra("level", level);
         intent.putExtra("levelPackage", levelPackage);
         startActivity(intent);
     }
 
     /**
-     * Called by the view when the user loses the gameSystem.
+     * Called when the user loses the game.
      * Also called from onSaveInstanceState.
      */
     public void lose(){
-        Intent intent = new Intent(this, LoseActivity.class);
+        Intent intent = new Intent(this, Activity_LoseActivity.class);
         intent.putExtra("level", level);
         intent.putExtra("levelPackage", levelPackage);
         startActivity(intent);

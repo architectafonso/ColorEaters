@@ -11,7 +11,7 @@ import android.view.View;
  * Activity shown when the player loses the gameSystem.
  * Allows restart the gameSystem and return to levels menu of this package.
  */
-public class LoseActivity extends Activity {
+public class Activity_LoseActivity extends Activity {
 
     /**
      * Level information to allow return to the level package and restart of the same level.
@@ -50,7 +50,7 @@ public class LoseActivity extends Activity {
      * The intent has FLAG_ACTIVITY_CLEAR_TOP to remove other activities from memory.
      */
     private void goBack(){
-        Intent intent = new Intent(this, LevelMenuActivity.class);
+        Intent intent = new Intent(this, Activity_LevelMenuActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("levelPackage", levelPackage);
         startActivity(intent);
@@ -70,14 +70,15 @@ public class LoseActivity extends Activity {
 
 
     /**
-     * When restart is pressed starts the GameActivity with the same level and level package.
+     * When restart is pressed starts the Activity_GameActivity with the same level and level package.
      * @param view Restart button.
      */
     public void restart(View view){
-        Intent intent = new Intent(this, GameActivity.class);
+        Intent intent = new Intent(this, Activity_GameActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("level", level);
         intent.putExtra("levelPackage", levelPackage);
+        intent.putExtra("fromMenu", true);
         startActivity(intent);
     }
 

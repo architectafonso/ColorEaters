@@ -1,4 +1,4 @@
-package com.empire_of_science.joao.coloreaters2;
+package com.color.eaters;
 
 /**
  * Created by João on 17/08/2015.
@@ -16,7 +16,7 @@ package com.empire_of_science.joao.coloreaters2;
  *
  * Use LevelLoader.loadLevel to actually get an board with the level loaded.
  */
-class Levels {
+public class Levels {
 
     /**
      * This method calls the level package to obtain the level and to convert it.

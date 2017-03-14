@@ -8,7 +8,7 @@ import android.view.View;
 /**
  * Represents the entry screen of the app.
  */
-public class MainActivity extends Activity {
+public class Activity_MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,38 +18,38 @@ public class MainActivity extends Activity {
 
 
     /**
-     * Changes to MainLevelMenuActivity in response to pressing PLAY button.
+     * Changes to Activity_MainLevelMenuActivity in response to pressing PLAY button.
      * @param view PLAY button.
      */
     public void go(View view){
-        Intent intent = new Intent(this, MainLevelMenuActivity.class);
+        Intent intent = new Intent(this, Activity_MainLevelMenuActivity.class);
         startActivity(intent);
     }
 
     /**
-     * Changes to HelpActivity in response to pressing HELP button.
+     * Changes to Activity_HelpActivity in response to pressing HELP button.
      * @param view HELP button.
      */
     public void toHelp(View view){
-        Intent intent = new Intent(this, HelpActivity.class);
+        Intent intent = new Intent(this, Activity_HelpActivity.class);
         startActivity(intent);
     }
 
     /**
-     * Changes to AboutActivity in response to pressing ABOUT button.
+     * Changes to Activity_AboutActivity in response to pressing ABOUT button.
      * @param view ABOUT button.
      */
     public void toAbout(View view){
-        Intent intent = new Intent(this, AboutActivity.class);
+        Intent intent = new Intent(this, Activity_AboutActivity.class);
         startActivity(intent);
     }
 
     /**
-     * Changes to SettingsActivity in response to pressing SETTINGS button.
+     * Changes to Activity_SettingsActivity in response to pressing SETTINGS button.
      * @param view SETTINGS button.
      */
     public void toSettings(View view){
-        Intent intent = new Intent(this, SettingsActivity.class);
+        Intent intent = new Intent(this, Activity_SettingsActivity.class);
         startActivity(intent);
     }
 }

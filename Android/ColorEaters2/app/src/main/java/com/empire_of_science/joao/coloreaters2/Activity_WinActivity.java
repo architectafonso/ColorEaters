@@ -11,7 +11,7 @@ import android.view.View;
  * Activity shown when the player solves a level. Allows go to the next level and return to level
  * menu. Sets the level as solved.
  */
-public class WinActivity extends Activity {
+public class Activity_WinActivity extends Activity {
 
     /**
      * Level data that allows going to the next level.
@@ -54,7 +54,7 @@ public class WinActivity extends Activity {
      * Goes to the level menu activity for this level package.
      */
     private void goBack(){
-        Intent intent = new Intent(this, LevelMenuActivity.class);
+        Intent intent = new Intent(this, Activity_LevelMenuActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("levelPackage", levelPackage);
         startActivity(intent);
@@ -78,12 +78,13 @@ public class WinActivity extends Activity {
      */
     public void next(View view){
         if(level+1 <= 20) {
-            Intent intent = new Intent(this, GameActivity.class);
+            Intent intent = new Intent(this, Activity_GameActivity.class);
             intent.putExtra("level", level + 1);
             intent.putExtra("levelPackage", levelPackage);
+            intent.putExtra("fromMenu", true);
             startActivity(intent);
         } else {
-            Intent intent = new Intent(this, LevelMenuActivity.class);
+            Intent intent = new Intent(this, Activity_LevelMenuActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.putExtra("levelPackage", levelPackage);
             startActivity(intent);

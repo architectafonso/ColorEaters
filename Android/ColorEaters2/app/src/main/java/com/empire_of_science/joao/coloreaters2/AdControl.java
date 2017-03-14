@@ -11,9 +11,9 @@ import com.google.android.gms.ads.AdView;
 
     /**
      * The constructor sets the AdView.
-     * @param activity Associated GameActivity.
+     * @param activity Associated Activity_GameActivity.
      */
-    public static void setAdd(GameActivity activity){
+    public static void setAdd(Activity_GameActivity activity){
         AdView mAdView = (AdView) activity.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);

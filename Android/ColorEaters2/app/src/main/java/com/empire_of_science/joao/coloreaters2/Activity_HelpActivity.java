@@ -10,7 +10,7 @@ import android.view.MenuItem;
  * Help screen where the instructions are shown.
  * Class unchanged.
  */
-public class HelpActivity extends Activity {
+public class Activity_HelpActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

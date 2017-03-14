@@ -8,7 +8,7 @@ import android.view.MenuItem;
 /**
  * The about screen where credits and info about the gameSystem is shown.
  */
-public class AboutActivity extends Activity {
+public class Activity_AboutActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -3,7 +3,7 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content"
 
-    tools:context="com.empire_of_science.joao.coloreaters2.GameActivity">
+    tools:context="com.empire_of_science.joao.coloreaters2.Activity_GameActivity">
 
     <TextView
         android:id="@+id/moves_left"

@@ -1,6 +1,8 @@
 package com.empire_of_science.joao.coloreaters2;
 
 
+import java.util.Random;
+
 /**
  * Created by João on 14/08/2015.
  * This abstract class represents every board piece of any kind.
@@ -8,16 +10,22 @@ package com.empire_of_science.joao.coloreaters2;
 abstract class BoardPiece {
 
     /**
+     * Stage of the piece's background animation.
+     * Can be a number from 0 to 4.
+     */
+    int animationLoopState = 0;
+
+    /**
      * Coordinates for the horizontal precise position of the piece in the view.
      * Used because of animations. Will be a value between 0 and 1000.
      */
-    public int graphicsX;
+    int graphicsX;
 
     /**
      * Coordinates for the vertical precise position of the piece in the view.
      * Used because of animations. Will be a value between 0 and 1000.
      */
-    public int graphicsY;
+    int graphicsY;
 
     /**
      * Board horizontal coordinate for the board cell the piece is in.
@@ -42,6 +50,14 @@ abstract class BoardPiece {
         moveToPlace();
     }
 
+    /**
+     * Returns a board piece from the letter used in the string array that defines a level or
+     * paused state.
+     * @param c Char that defines the piece.
+     * @param x X cell coordinate the piece is gonna be in.
+     * @param y Y cell coordinate the piece is gonna be in.
+     * @return The wanted piece.
+     */
     static BoardPiece BoardPieceFactory(char c, int x, int y) {
         if (c == 'X') return new BoardPiece_Block(x, y);
         switch (c) {
@@ -72,8 +88,16 @@ abstract class BoardPiece {
     }
 
 
-    static char toChar(BoardPiece p, boolean isEatenCakeConsidered) {
-        if (p instanceof  BoardPiece_EatenCake && !isEatenCakeConsidered) return ' ';
+    /**
+     * Gets the char that represents this piece in the string arrays used to store levels and saved
+     * state, or a space if p is null.
+     * If the piece is eaten cake, than it is the same as null, as it is eaten anyway.
+     * @param p The BoardPiece.
+     * @return The corresponding character.
+     */
+    static char toChar(BoardPiece p) {
+        if (p instanceof  BoardPiece_EatenCake) return ' ';
+        if (p == null) return ' ';
         if (p instanceof BoardPiece_Block) return 'X';
         if (p instanceof BoardPiece_Eater) {
             switch (((BoardPiece_Eater) p).color) {
@@ -86,8 +110,7 @@ abstract class BoardPiece {
 
             }
         }
-        Colors c = Colors.White;
-        if (p instanceof BoardPiece_Cake || (p instanceof BoardPiece_EatenCake)) // Is eaten cake considered always true here.
+        if (p instanceof BoardPiece_Cake) // Is eaten cake considered always true here.
         {
             switch (((BoardPieceWithColor) p).color) {
                 case Green: return 'g';

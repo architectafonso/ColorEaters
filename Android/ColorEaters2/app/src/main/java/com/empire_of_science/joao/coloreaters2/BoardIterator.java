@@ -24,7 +24,7 @@ class BoardIterator implements Iterator<BoardPiece> {
     private final Board board;
 
     /**
-     * Th constructor sets the board.
+     * The constructor sets the board.
      * @param b The board this iterates over.
      */
     BoardIterator(Board b) {

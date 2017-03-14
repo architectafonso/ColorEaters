@@ -1,4 +1,4 @@
-package com.empire_of_science.joao.coloreaters2;
+package com.color.eaters;
 
 /**
  * Created by João on 06/10/2016.

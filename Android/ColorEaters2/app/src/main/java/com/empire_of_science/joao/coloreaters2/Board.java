@@ -9,8 +9,6 @@ import java.util.Iterator;
  */
 class Board implements Iterable<BoardPiece> {
 
-    Animator animator;
-
     /**
      * The number of moves that the player can still use.
      */
@@ -65,17 +63,13 @@ class Board implements Iterable<BoardPiece> {
      */
     void setGameOverState() {
         if(gameOverState != GameOverState.Continue ) return;
-
         boolean zeroFood = true;
         for(BoardPiece piece : this)
             if(piece instanceof BoardPiece_Cake) zeroFood = false;
-
         if(zeroFood)
             this.gameOverState = GameOverState.Win;
-
         else if(this.movesLeft < 1)
             this.gameOverState = GameOverState.Lose;
-
         else
             this.gameOverState = GameOverState.Continue;
     }
@@ -108,7 +102,9 @@ class Board implements Iterable<BoardPiece> {
         hasSelected = false;
     }
 
-
+    /**
+     *
+     */
     void removeEatenCake() {
         for (BoardPiece piece : this) {
             if (piece instanceof BoardPiece_EatenCake) {
@@ -128,8 +124,7 @@ class Board implements Iterable<BoardPiece> {
     }
 
     /**
-     * This method causes every BoardPiece_Eater in the board to eat, so that all cake to be eaten gets to have
-     * toDelete = true eater pointing to their respective eater.
+     * This method causes every BoardPiece_Eater in the board to eat.
      * @return true if there is cake to be eaten.
      */
     boolean eat(){
@@ -143,6 +138,13 @@ class Board implements Iterable<BoardPiece> {
         return hasEaten;
     }
 
+    /**
+     * Makes a BoardPiece_Cake to be replaced with BoardPiece_EatenCake with its eater filed pointing
+     * to the respective eater.
+     * @param x Board x coordinate of the cake to be eaten.
+     * @param y Board y coordinate of the cake to be eaten.
+     * @param eater Eater of the cake.
+     */
     void eatACake(int x, int y, BoardPiece_Eater eater){
         if ( !( pieces[x][y] instanceof BoardPiece_Cake ) ) {
             throw new GameException("Try to eat piece that's not cake @: " + x + ", " + y);
@@ -151,6 +153,10 @@ class Board implements Iterable<BoardPiece> {
     }
 
     /**
+     * THIS METHOD IS NOT USED AS IN THE NBEW VERSION THERE IS NO SELECTION OF CELLS, BUT IT IS
+     * LEFT HERE FOR THE POSSIBILITY OF IN THE FUTURE NEW SELECTION OF CELL IS IMPLEMENTED AS
+     * AN OPTION OVER DIRECTLY MOVE PIECES WITH FINGER.
+     *
      * Selects the board cell at (x,y) if that is possible depending on which piece is there if any.
      * @param x Cell x coordinate.
      * @param y Cell y coordinate.
@@ -168,6 +174,8 @@ class Board implements Iterable<BoardPiece> {
     }
 
     /**
+     * NOT IN USE; SAME AS trySelectCell.
+     *
      * Moves the selected piece to the cell at the specified coordinates, if possible, and in any
      * case sets hasSelected = false.
      * @param toX Cell coordinates where to move the selected piece.
@@ -183,22 +191,68 @@ class Board implements Iterable<BoardPiece> {
         return false;
     }
 
+    /**
+     * Moves one piece to another cell, and swaps if there was another piece there, returns that
+     * other piece so that its move can be animated.
+     * @param fromX X coordinate of the cell of the piece to be moved.
+     * @param fromY Y coordinate of the cell of the piece to be moved.
+     * @param toX X coordinate of the cell the piece is supposed to move to.
+     * @param toY Y coordinate of the cell the piece is supposed to move to.
+     * @return The piece that is swaped or null.
+     */
+    BoardPiece movePiece_ReturnPieceAtDestinyOrNull(int fromX, int fromY, int toX, int toY){
+        if (pieces[fromX][fromY] != null && pieces[fromX][fromY].canDoMovement(this, toX, toY)){
+            if (pieces[toX][toY] == null) {
+                pieces[fromX][fromY].boardX = toX;
+                pieces[fromX][fromY].boardY = toY;
+                pieces[toX][toY] = pieces[fromX][fromY];
+                pieces[fromX][fromY] = null;
+                return null;
+            }
+            // Else, has to trade the pieces using the hold variable.
+            BoardPiece hold = pieces[toX][toY];     // Creates hold and puts piece that was on destiny there.
+            pieces[fromX][fromY].boardX = toX;
+            pieces[fromX][fromY].boardY = toY;
+            hold.boardX = fromX;
+            hold.boardY = fromY;
+            pieces[toX][toY] = pieces[fromX][fromY];
+            pieces[fromX][fromY] = hold;
+            return hold;
+        }
+        return null;
+    }
+
+    /**
+     * Returns piece in the cell.
+     * @param x Cell x coordinate.
+     * @param y Cell y coordinate.
+     * @return Piece in the cell.
+     */
     BoardPiece getPieceAt(int x, int y) {
         return pieces[x][y];
     }
 
+    /**
+     * Returns teh iterator that iterates over the pieces in this board.
+     * @return Iterator.
+     */
     public Iterator<BoardPiece> iterator() {
         return new BoardIterator(this);
     }
 
+    /**
+     * Returns teh string array representing the state of the level, in the same format the levels
+     * are stored.
+     * @return String array representing the level.
+     */
     String[] toStringArray(){
         char[][] array = new char[6][];
         for (int y = 0; y < 6; y++){
-            array[y] = new char[6];
+            array[y] = new char[]{' ', ' ', ' ', ' ', ' ', ' '};
         }
         for (BoardPiece p : this){
             if (!(p instanceof BoardPiece_EatenCake)){
-                array[p.boardY][p.boardX] = BoardPiece.toChar(p, false);
+                array[p.boardY][p.boardX] = BoardPiece.toChar(p);
             }
         }
         String[] stArray = new String[7];

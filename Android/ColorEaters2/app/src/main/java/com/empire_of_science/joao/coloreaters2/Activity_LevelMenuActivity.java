@@ -10,10 +10,10 @@ import android.widget.Button;
 /**
  * Level selection menu.
  */
-public class LevelMenuActivity extends AppCompatActivity {
+public class Activity_LevelMenuActivity extends AppCompatActivity {
 
     /**
-     *  The gameSystem package from which the user will chose the levels.
+     *  The levels package from which the user will chose the levels.
      *  Transmitted from the package selected activity or from the gameSystem, win or lose activities
      *  when back is pressed.
      */
@@ -72,13 +72,13 @@ public class LevelMenuActivity extends AppCompatActivity {
 
     /**
      * Called when a level button is pressed.
-     * Gets the level from the button text and starts GameActivity, sending in the intent
+     * Gets the level from the button text and starts Activity_GameActivity, sending in the intent
      * the right levelPackage and level.
      *
      * @param view Pressed Button.
      */
     public void startGame(View view){
-        Intent intent = new Intent(this, GameActivity.class);
+        Intent intent = new Intent(this, Activity_GameActivity.class);
         Button pressedButton = (Button)view;
         int levelInt = Integer.parseInt(pressedButton.getText().toString());
         intent.putExtra("level", levelInt);
@@ -87,12 +87,12 @@ public class LevelMenuActivity extends AppCompatActivity {
     }
 
     /**
-     * Pressing back goes to MainLevelMenuActivity where another gameSystem package can be selected
+     * Pressing back goes to Activity_MainLevelMenuActivity where another levels package can be selected
      * or go to the main menu.
      */
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, MainLevelMenuActivity.class);
+        Intent intent = new Intent(this, Activity_MainLevelMenuActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

@@ -7,11 +7,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
+ *
+ * CURRENT CODE REFERS TO LAST VERSION OF THIS APP, AND THE ARCHAIC WAY ANIMATIONS
+ * WERE IMPLEMENTED.
+ *
  * Represents the activity where the user can change the app settings.
  *
  * Currently the settings are animation on/off and sounds on/off.
  */
-public class SettingsActivity extends AppCompatActivity {
+public class Activity_SettingsActivity extends AppCompatActivity {
 
     /**
      * True if the animations are activated.
@@ -47,6 +51,9 @@ public class SettingsActivity extends AppCompatActivity {
      * Sets the animation button and text accordingly with the current gameOverState.
      */
     private void setAnimationButtonAndText(){
+        /*
+        THE ANIMATION BUTTON IS NOT SHOWING, MIGHT SHOW IN THE FUTURE AGAIN IF FOR INSTANCE THERE
+        IS A SETTING FOR CHOOSING BETWEEN GRABBING PIECES OR SELECT AND MOVE.
         if (animationOn){
             ((TextView)findViewById(R.id.animation)).setText(R.string.animation_on);
             ((Button)findViewById(R.id.animation_button)).setText(R.string.turn_animation_off);
@@ -54,6 +61,7 @@ public class SettingsActivity extends AppCompatActivity {
             ((TextView)findViewById(R.id.animation)).setText(R.string.animation_off);
             ((Button)findViewById(R.id.animation_button)).setText(R.string.turn_animation_on);
         }
+        */
     }
 
     /**

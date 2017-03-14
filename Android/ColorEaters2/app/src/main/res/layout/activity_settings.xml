@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.empire_of_science.joao.coloreaters2.SettingsActivity"
+    tools:context="com.empire_of_science.joao.coloreaters2.Activity_SettingsActivity"
     android:orientation="vertical">
 
 
@@ -22,7 +22,8 @@
             android:layout_width="match_parent"
             android:onClick="setSound"
             android:id="@+id/sound_button"/>
-
+<!--    NOT IN USE NOW IT STILL IS HERE BECAUSE IN THE FUTURE MIGHT BE INTERESTING TO CRATE AN
+ OPTION TO STOP ANIMATIONS.
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,5 +34,5 @@
             android:layout_height="wrap_content"
             android:onClick="setAnimation"
             android:id="@+id/animation_button"/>
-
+-->
 </LinearLayout>

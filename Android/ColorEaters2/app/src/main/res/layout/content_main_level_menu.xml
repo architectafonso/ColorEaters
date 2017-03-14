@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.empire_of_science.joao.coloreaters2.MainLevelMenuActivity"
+    tools:context="com.empire_of_science.joao.coloreaters2.Activity_MainLevelMenuActivity"
     tools:showIn="@layout/activity_main_level_menu"
     >
 

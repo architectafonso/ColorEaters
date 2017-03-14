@@ -10,5 +10,5 @@ enum Colors {
     Blue,
     Red,
     Yellow,
-    White;
+    White
 }

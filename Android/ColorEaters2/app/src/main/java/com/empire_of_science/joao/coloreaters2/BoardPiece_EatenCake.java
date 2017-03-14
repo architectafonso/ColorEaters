@@ -16,6 +16,9 @@ class BoardPiece_EatenCake extends BoardPieceWithColor {
     }
 
 
+    /**
+     * The eater that has eaten this cake.
+     */
     BoardPiece_Eater eater;
 
     BoardPiece_EatenCake(BoardPiece_Cake original, BoardPiece_Eater eater){
@@ -24,4 +27,7 @@ class BoardPiece_EatenCake extends BoardPieceWithColor {
         graphicsY = original.graphicsY;
         this.eater = eater;
     }
+
+    int deltaX;
+    int deltaY;
 }

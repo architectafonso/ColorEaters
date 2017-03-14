@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity_MainActivity"
             android:label="@string/app_name">
             <meta-data
                 android:name="com.google.android.gms.version"
@@ -26,28 +26,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LevelMenuActivity"
+            android:name=".Activity_LevelMenuActivity"
             android:label="@string/title_activity_level_menu" />
         <activity
-            android:name=".GameActivity"
+            android:name=".Activity_GameActivity"
             android:label="@string/title_activity_game" />
         <activity
-            android:name=".WinActivity"
+            android:name=".Activity_WinActivity"
             android:label="@string/title_activity_win" />
         <activity
-            android:name=".LoseActivity"
+            android:name=".Activity_LoseActivity"
             android:label="@string/title_activity_lose" />
         <activity
-            android:name=".AboutActivity"
+            android:name=".Activity_AboutActivity"
             android:label="@string/title_activity_about" />
         <activity
-            android:name=".HelpActivity"
+            android:name=".Activity_HelpActivity"
             android:label="@string/title_activity_help" />
         <activity
-            android:name=".MainLevelMenuActivity"
+            android:name=".Activity_MainLevelMenuActivity"
             android:label="@string/title_activity_main_level_menu"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".Activity_SettingsActivity"></activity>
     </application>
 
 </manifest>

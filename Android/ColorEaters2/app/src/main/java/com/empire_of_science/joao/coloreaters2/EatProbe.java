@@ -6,7 +6,14 @@ package com.empire_of_science.joao.coloreaters2;
  */
 
 class EatProbe {
-    
+
+    /**
+     * Probes the surroundings of an eater and changes all the cake that this eater eats
+     * to eaten cake, using recursion.
+     * @param board Board to test.
+     * @param eater Eater that is going to eat.
+     * @return True if anything was eaten.
+     */
     static boolean ProbeAndSetToDelete(Board board, BoardPiece_Eater eater) {
         boolean hasEaten = false;
         if (testUp(eater.boardX, eater.boardY, board, eater)) hasEaten = true;
@@ -16,6 +23,15 @@ class EatProbe {
         return hasEaten;
     }
 
+    /**
+     * Tests above specified cell, if there is cake of the right color there, it swaps it for
+     * eaten cake and tests from there in 3 directions.
+     * @param x Cell coordinate above which the test will occur.
+     * @param y Cell coordinate above which the test will occur.
+     * @param board The Board to test.
+     * @param eater The eater responsible for eating the cake if cake is found.
+     * @return True if cake was eaten.
+     */
     private static boolean testUp(int x, int y, Board board, BoardPiece_Eater eater){
         if (y > 0 && board.getPieceAt(x, y-1) instanceof BoardPiece_Cake) {
 
@@ -32,7 +48,15 @@ class EatProbe {
         return false;
     }
 
-
+    /**
+     * Tests below specified cell, if there is cake of the right color there, it swaps it for
+     * eaten cake and tests from there in 3 directions.
+     * @param x Cell coordinate below which the test will occur.
+     * @param y Cell coordinate below which the test will occur.
+     * @param board The Board to test.
+     * @param eater The eater responsible for eating the cake if cake is found.
+     * @return True if cake was eaten.
+     */
     private static boolean testDown(int x, int y, Board board, BoardPiece_Eater eater){
         if (y < 5 && board.getPieceAt(x, y+1) instanceof BoardPiece_Cake) {
             BoardPiece_Cake cake = (BoardPiece_Cake) board.getPieceAt(x, y + 1);
@@ -48,7 +72,15 @@ class EatProbe {
         return false;
     }
 
-
+    /**
+     * Tests cell to the left of the specified cell, if there is cake of the right color there, it swaps it for
+     * eaten cake and tests from there in 3 directions.
+     * @param x Cell coordinate to the right to  the one the test will occur.
+     * @param y Cell coordinate to the right to  the one the test will occur.
+     * @param board The Board to test.
+     * @param eater The eater responsible for eating the cake if cake is found.
+     * @return True if cake was eaten.
+     */
     private static boolean testLeft(int x, int y, Board board, BoardPiece_Eater eater) {
         if (x > 0 && board.getPieceAt(x-1, y) instanceof BoardPiece_Cake) {
             BoardPiece_Cake cake = (BoardPiece_Cake) board.getPieceAt(x - 1, y);
@@ -64,7 +96,15 @@ class EatProbe {
         return false;
     }
 
-
+    /**
+     * Tests cell to the right of the specified cell, if there is cake of the right color there, it swaps it for
+     * eaten cake and tests from there in 3 directions.
+     * @param x Cell coordinate to the left to  the one the test will occur.
+     * @param y Cell coordinate to the left to  the one the test will occur.
+     * @param board The Board to test.
+     * @param eater The eater responsible for eating the cake if cake is found.
+     * @return True if cake was eaten.
+     */
     private static boolean testRight(int x, int y, Board board, BoardPiece_Eater eater){
         if (x < 5 && board.getPieceAt(x+1, y) instanceof BoardPiece_Cake){
             BoardPiece_Cake cake = (BoardPiece_Cake)board.getPieceAt(x + 1, y);

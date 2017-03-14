@@ -1,4 +1,4 @@
-package com.empire_of_science.joao.coloreaters2;
+package com.color.eaters;
 
 /**
  * Class that represents an level package with 20 levels.
