@@ -4,12 +4,12 @@ package com.empire_of_science.joao.coloreaters2;
  * Created by João on 31/10/2016.
  * Represents the BoardPiece_Cake.
  */
-class BoardPiece_Cake extends BoardPieceWithColor {
+class BoardPiece_Cake extends BoardPiece_Edible {
 
     /**
      * The eater that have eaten this cake.
      */
-    BoardPiece_Eater eater;
+    BoardPiece_NormalEater eater;
 
 
     /**
@@ -20,6 +20,12 @@ class BoardPiece_Cake extends BoardPieceWithColor {
      */
     BoardPiece_Cake(int x, int y, Colors color){
         super (x, y, color);
+    }
+
+    @Override
+    public boolean getEaten(Board board, BoardPiece_Eater eater) {
+        board.setPiece(boardX, boardY, new BoardPiece_EatenCake(this, eater));
+        return true;
     }
 
     /**
@@ -38,7 +44,7 @@ class BoardPiece_Cake extends BoardPieceWithColor {
                 (goToX == boardX - 1 && goToY == boardY);
 
         boolean hasRightKindOfPieceOrNone = (board.getPieceAt(goToX, goToY) instanceof BoardPiece_Cake ||
-                board.getPieceAt(goToX, goToY) instanceof BoardPiece_Eater ||
+                board.getPieceAt(goToX, goToY) instanceof BoardPiece_NormalEater ||
                 board.getPieceAt(goToX, goToY) == null);
 
         return isNextDoor && hasRightKindOfPieceOrNone;

@@ -104,7 +104,7 @@ class Levels_4 {
                         "w  w w",
                         " w  w ",
                         "www  W",
-                        "10"
+                        "9"
 
 
                 };

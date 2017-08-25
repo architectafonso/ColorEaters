@@ -19,9 +19,9 @@ class BoardPiece_EatenCake extends BoardPieceWithColor {
     /**
      * The eater that has eaten this cake.
      */
-    BoardPiece_Eater eater;
+    BoardPiece eater;
 
-    BoardPiece_EatenCake(BoardPiece_Cake original, BoardPiece_Eater eater){
+    BoardPiece_EatenCake(BoardPiece_Cake original, BoardPiece eater){
         super(original.boardX, original.boardY, original.color);
         graphicsX = original.graphicsX;
         graphicsY = original.graphicsY;

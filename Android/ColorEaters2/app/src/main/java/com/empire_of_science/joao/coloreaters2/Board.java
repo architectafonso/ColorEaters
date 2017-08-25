@@ -74,6 +74,10 @@ class Board implements Iterable<BoardPiece> {
             this.gameOverState = GameOverState.Continue;
     }
 
+    public void setPiece(int x, int y, BoardPiece p){
+        pieces[x][y] = p;
+    }
+
     /**
      * Moves the selected piece to a location. Changes the board coordinates
      * of the piece but not the graphics coordinates that are used to draw them.
@@ -124,7 +128,7 @@ class Board implements Iterable<BoardPiece> {
     }
 
     /**
-     * This method causes every BoardPiece_Eater in the board to eat.
+     * This method causes every BoardPiece_NormalEater in the board to eat.
      * @return true if there is cake to be eaten.
      */
     boolean eat(){
@@ -133,6 +137,15 @@ class Board implements Iterable<BoardPiece> {
             if (piece instanceof BoardPiece_Eater) {
                 ((BoardPiece_Eater) piece).eat(this);
                 hasEaten = true;
+            }
+        }
+        // Only now it really unfreezes, because otherwise unfreezed cake could be eaten by another
+        // eater at the same eating event.
+        for ( BoardPiece piece : this) {
+            if (piece instanceof BoardPiece_FrozenCake && ((BoardPiece_FrozenCake)piece).unfreezing){
+                pieces[piece.boardX][piece.boardY] = new BoardPiece_Cake(
+                        piece.boardX, piece.boardY, ((BoardPiece_FrozenCake)piece).color
+                );
             }
         }
         return hasEaten;
@@ -145,7 +158,7 @@ class Board implements Iterable<BoardPiece> {
      * @param y Board y coordinate of the cake to be eaten.
      * @param eater Eater of the cake.
      */
-    void eatACake(int x, int y, BoardPiece_Eater eater){
+    void eatACake(int x, int y, BoardPiece eater){
         if ( !( pieces[x][y] instanceof BoardPiece_Cake ) ) {
             throw new GameException("Try to eat piece that's not cake @: " + x + ", " + y);
         }
@@ -153,7 +166,7 @@ class Board implements Iterable<BoardPiece> {
     }
 
     /**
-     * THIS METHOD IS NOT USED AS IN THE NBEW VERSION THERE IS NO SELECTION OF CELLS, BUT IT IS
+     * THIS METHOD IS NOT USED AS IN THE NEW VERSION THERE IS NO SELECTION OF CELLS, BUT IT IS
      * LEFT HERE FOR THE POSSIBILITY OF IN THE FUTURE NEW SELECTION OF CELL IS IMPLEMENTED AS
      * AN OPTION OVER DIRECTLY MOVE PIECES WITH FINGER.
      *

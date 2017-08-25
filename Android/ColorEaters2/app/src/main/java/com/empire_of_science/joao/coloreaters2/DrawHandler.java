@@ -94,7 +94,7 @@ class DrawHandler {
      */
     private void drawCake(Canvas canvas, GameSystem gameSystem){
         for (BoardPiece piece : gameSystem.board) {
-            if (piece instanceof BoardPiece_Cake || piece instanceof BoardPiece_EatenCake){
+            if (piece instanceof BoardPiece_Cake || piece instanceof BoardPiece_EatenCake || piece instanceof BoardPiece_FrozenCake){
                 drawPiece(canvas, piece, gameSystem);
             }
         }
@@ -107,7 +107,7 @@ class DrawHandler {
      */
     private void drawEaters(Canvas canvas, GameSystem gameSystem){
         for (BoardPiece piece : gameSystem.board) {
-            if(piece instanceof BoardPiece_Eater) {
+            if(piece instanceof BoardPiece_NormalEater || piece instanceof BoardPiece_FlyingFatso) {
                 drawPiece(canvas, piece, gameSystem);
             }
         }

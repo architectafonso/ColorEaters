@@ -41,6 +41,8 @@ public class Levels {
                 return Levels_6.getLevel(level);
             case 7:
                 return Levels_7.getLevel(level);
+            case 8:
+                return Levels_8.getLevel(level);
             default:
                 return new String[0];
         }

@@ -1,8 +1,6 @@
 package com.empire_of_science.joao.coloreaters2;
 
 
-import java.util.Random;
-
 /**
  * Created by João on 14/08/2015.
  * This abstract class represents every board piece of any kind.
@@ -64,23 +62,43 @@ abstract class BoardPiece {
             case 'b':
                 return  new BoardPiece_Cake(x,y, Colors.Blue);
             case 'B':
-                return  new BoardPiece_Eater(x,y, Colors.Blue);
+                return  new BoardPiece_NormalEater(x,y, Colors.Blue);
             case 'g':
                 return  new BoardPiece_Cake(x,y, Colors.Green);
             case 'G':
-                return  new BoardPiece_Eater(x,y, Colors.Green);
+                return  new BoardPiece_NormalEater(x,y, Colors.Green);
             case 'r':
                 return  new BoardPiece_Cake(x,y, Colors.Red);
             case 'R':
-                return  new BoardPiece_Eater(x,y, Colors.Red);
+                return  new BoardPiece_NormalEater(x,y, Colors.Red);
             case 'y':
                 return  new BoardPiece_Cake(x,y, Colors.Yellow);
             case 'Y':
-                return  new BoardPiece_Eater(x,y, Colors.Yellow);
+                return  new BoardPiece_NormalEater(x,y, Colors.Yellow);
             case 'w':
                 return  new BoardPiece_Cake(x,y, Colors.White);
             case 'W':
-                return  new BoardPiece_Eater(x,y, Colors.White);
+                return  new BoardPiece_NormalEater(x,y, Colors.White);
+            case 'n':
+                return  new BoardPiece_FrozenCake(x,y, Colors.Blue);
+            case 'N':
+                return  new BoardPiece_FlyingFatso(x,y, Colors.Blue);
+            case 'h':
+                return  new BoardPiece_FrozenCake(x,y, Colors.Green);
+            case 'H':
+                return  new BoardPiece_FlyingFatso(x,y, Colors.Green);
+            case 't':
+                return  new BoardPiece_FrozenCake(x,y, Colors.Red);
+            case 'T':
+                return  new BoardPiece_FlyingFatso(x,y, Colors.Red);
+            case 'u':
+                return  new BoardPiece_FrozenCake(x,y, Colors.Yellow);
+            case 'U':
+                return  new BoardPiece_FlyingFatso(x,y, Colors.Yellow);
+            case 'e':
+                return  new BoardPiece_FrozenCake(x,y, Colors.White);
+            case 'E':
+                return  new BoardPiece_FlyingFatso(x,y, Colors.White);
             case ' ':
                 return null;
             default: throw (new GameException("Provided Level Isn't in correct form - Bad character: " + c));
@@ -99,15 +117,14 @@ abstract class BoardPiece {
         if (p instanceof  BoardPiece_EatenCake) return ' ';
         if (p == null) return ' ';
         if (p instanceof BoardPiece_Block) return 'X';
-        if (p instanceof BoardPiece_Eater) {
-            switch (((BoardPiece_Eater) p).color) {
+        if (p instanceof BoardPiece_NormalEater) {
+            switch (((BoardPiece_NormalEater) p).color) {
                 case Green: return 'G';
                 case Red: return 'R';
                 case Yellow: return 'Y';
                 case White: return 'W';
                 case Blue: return 'B';
                 default: throw (new GameException("Provided Level Isn't in correct form - Bad character"));
-
             }
         }
         if (p instanceof BoardPiece_Cake) // Is eaten cake considered always true here.
@@ -118,7 +135,27 @@ abstract class BoardPiece {
                 case Yellow: return 'y';
                 case White: return 'w';
                 case Blue: return 'b';
-                default: throw (new GameException("Provided Level Isn't in correct form - Bad character"));
+                default: throw (new GameException("Provided Level Isn't in correct form - Bad piece"));
+            }
+        }
+        if (p instanceof BoardPiece_FrozenCake ){
+            switch (((BoardPieceWithColor) p).color) {
+                case Green: return 'h';
+                case Red: return 't';
+                case Yellow: return 'u';
+                case White: return 'e';
+                case Blue: return 'n';
+                default: throw (new GameException("Provided Level Isn't in correct form - Bad piece"));
+            }
+        }
+        if (p instanceof BoardPiece_FlyingFatso ) {
+            switch (((BoardPieceWithColor) p).color) {
+                case Green: return 'H';
+                case Red: return 'T';
+                case Yellow: return 'U';
+                case White: return 'E';
+                case Blue: return 'N';
+                default: throw (new GameException("Provided Level Isn't in correct form - Bad piece"));
             }
         }
         return ' ';

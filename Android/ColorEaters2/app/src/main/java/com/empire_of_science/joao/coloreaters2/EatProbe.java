@@ -20,12 +20,13 @@ class EatProbe {
         if (testDown(eater.boardX, eater.boardY, board, eater)) hasEaten = true;
         if (testLeft(eater.boardX, eater.boardY, board, eater)) hasEaten = true;
         if (testRight(eater.boardX, eater.boardY, board, eater)) hasEaten = true;
+        if (eater instanceof BoardPiece_FlyingFatso) board.setPiece(((BoardPiece_FlyingFatso) eater).boardX, ((BoardPiece_FlyingFatso) eater).boardX, null);
         return hasEaten;
     }
 
     /**
-     * Tests above specified cell, if there is cake of the right color there, it swaps it for
-     * eaten cake and tests from there in 3 directions.
+     * Tests above specified cell, if there is an edible of the right color there, eats it,
+     * and might test from there in 3 directions.
      * @param x Cell coordinate above which the test will occur.
      * @param y Cell coordinate above which the test will occur.
      * @param board The Board to test.
@@ -33,12 +34,12 @@ class EatProbe {
      * @return True if cake was eaten.
      */
     private static boolean testUp(int x, int y, Board board, BoardPiece_Eater eater){
-        if (y > 0 && board.getPieceAt(x, y-1) instanceof BoardPiece_Cake) {
+        if (y > 0 && board.getPieceAt(x, y-1) instanceof BoardPiece_Edible) {
 
-            BoardPiece_Cake cake = (BoardPiece_Cake)(board.getPieceAt(x, y - 1));
+            BoardPiece_Edible cake = (BoardPiece_Edible)(board.getPieceAt(x, y - 1));
 
             if (cake.color == eater.color) {
-                board.eatACake(x, y - 1, eater);
+                if (!cake.getEaten(board, eater)) return true;
                 testUp(x, y-1, board, eater);
                 testLeft(x, y-1, board, eater);
                 testRight(x, y-1, board, eater);
@@ -58,11 +59,11 @@ class EatProbe {
      * @return True if cake was eaten.
      */
     private static boolean testDown(int x, int y, Board board, BoardPiece_Eater eater){
-        if (y < 5 && board.getPieceAt(x, y+1) instanceof BoardPiece_Cake) {
-            BoardPiece_Cake cake = (BoardPiece_Cake) board.getPieceAt(x, y + 1);
+        if (y < 5 && board.getPieceAt(x, y+1) instanceof BoardPiece_Edible) {
+            BoardPiece_Edible cake = (BoardPiece_Edible) board.getPieceAt(x, y + 1);
 
             if (cake.color == eater.color) {
-                board.eatACake(x, y + 1, eater);
+                if (!cake.getEaten(board, eater)) return true;
                 testLeft(x, y + 1, board, eater);
                 testRight(x, y + 1, board, eater);
                 testDown(x, y + 1, board, eater);
@@ -82,11 +83,11 @@ class EatProbe {
      * @return True if cake was eaten.
      */
     private static boolean testLeft(int x, int y, Board board, BoardPiece_Eater eater) {
-        if (x > 0 && board.getPieceAt(x-1, y) instanceof BoardPiece_Cake) {
-            BoardPiece_Cake cake = (BoardPiece_Cake) board.getPieceAt(x - 1, y);
+        if (x > 0 && board.getPieceAt(x-1, y) instanceof BoardPiece_Edible) {
+            BoardPiece_Edible cake = (BoardPiece_Edible) board.getPieceAt(x - 1, y);
 
             if (cake.color == eater.color) {
-                board.eatACake(x - 1, y, eater);
+                if (!cake.getEaten(board, eater)) return true;
                 testDown(x - 1, y, board, eater);
                 testLeft(x - 1, y, board, eater);
                 testUp(x - 1, y, board, eater);
@@ -106,11 +107,11 @@ class EatProbe {
      * @return True if cake was eaten.
      */
     private static boolean testRight(int x, int y, Board board, BoardPiece_Eater eater){
-        if (x < 5 && board.getPieceAt(x+1, y) instanceof BoardPiece_Cake){
-            BoardPiece_Cake cake = (BoardPiece_Cake)board.getPieceAt(x + 1, y);
+        if (x < 5 && board.getPieceAt(x+1, y) instanceof BoardPiece_Edible){
+            BoardPiece_Edible cake = (BoardPiece_Edible) board.getPieceAt(x + 1, y);
 
             if(cake.color == eater.color){
-                board.eatACake(x + 1, y, eater);
+                if (!cake.getEaten(board, eater)) return true;
                 testRight(x+1, y, board, eater);
                 testDown(x+1, y, board, eater);
                 testUp(x+1, y, board, eater);
