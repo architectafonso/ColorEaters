@@ -30,7 +30,7 @@ class MoveHandler {
         } else {
             gameView.sounds.playMoveSound();
         }
-        board.removeEatenCake();
+        board.removeDeadPieces();
         board.movePiecesToPlace();
         gameSystem.endIfNecessary();
     }

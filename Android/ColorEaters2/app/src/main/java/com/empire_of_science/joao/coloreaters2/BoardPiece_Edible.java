@@ -9,5 +9,12 @@ public abstract class BoardPiece_Edible extends BoardPieceWithColor{
         super(x,y,color);
     }
 
+
+    /**
+     *
+     * @param board
+     * @param eater
+     * @return
+     */
     public abstract boolean getEaten(Board board, BoardPiece_Eater eater);
 }

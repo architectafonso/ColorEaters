@@ -16,11 +16,10 @@ class EatProbe {
      */
     static boolean ProbeAndSetToDelete(Board board, BoardPiece_Eater eater) {
         boolean hasEaten = false;
-        if (testUp(eater.boardX, eater.boardY, board, eater)) hasEaten = true;
-        if (testDown(eater.boardX, eater.boardY, board, eater)) hasEaten = true;
-        if (testLeft(eater.boardX, eater.boardY, board, eater)) hasEaten = true;
-        if (testRight(eater.boardX, eater.boardY, board, eater)) hasEaten = true;
-        if (eater instanceof BoardPiece_FlyingFatso) board.setPiece(((BoardPiece_FlyingFatso) eater).boardX, ((BoardPiece_FlyingFatso) eater).boardX, null);
+        if (testUp(eater.boardX, eater.boardY, board, eater, null)) hasEaten = true;
+        if (testDown(eater.boardX, eater.boardY, board, eater, null)) hasEaten = true;
+        if (testLeft(eater.boardX, eater.boardY, board, eater, null)) hasEaten = true;
+        if (testRight(eater.boardX, eater.boardY, board, eater, null)) hasEaten = true;
         return hasEaten;
     }
 
@@ -33,16 +32,19 @@ class EatProbe {
      * @param eater The eater responsible for eating the cake if cake is found.
      * @return True if cake was eaten.
      */
-    private static boolean testUp(int x, int y, Board board, BoardPiece_Eater eater){
+    private static boolean testUp(int x, int y, Board board, BoardPiece_Eater eater, BoardPiece_Edible transmitter){
         if (y > 0 && board.getPieceAt(x, y-1) instanceof BoardPiece_Edible) {
 
             BoardPiece_Edible cake = (BoardPiece_Edible)(board.getPieceAt(x, y - 1));
 
+            if(transmitter != null && transmitter instanceof BoardPiece_FrozenCake &&
+                    !(cake instanceof BoardPiece_FrozenCake)) return false;
+
             if (cake.color == eater.color) {
-                if (!cake.getEaten(board, eater)) return true;
-                testUp(x, y-1, board, eater);
-                testLeft(x, y-1, board, eater);
-                testRight(x, y-1, board, eater);
+                cake.getEaten(board, eater);
+                testUp(x, y-1, board, eater, cake);
+                testLeft(x, y-1, board, eater, cake);
+                testRight(x, y-1, board, eater, cake);
                 return true;
             }
         }
@@ -58,15 +60,18 @@ class EatProbe {
      * @param eater The eater responsible for eating the cake if cake is found.
      * @return True if cake was eaten.
      */
-    private static boolean testDown(int x, int y, Board board, BoardPiece_Eater eater){
+    private static boolean testDown(int x, int y, Board board, BoardPiece_Eater eater, BoardPiece_Edible transmitter){
         if (y < 5 && board.getPieceAt(x, y+1) instanceof BoardPiece_Edible) {
             BoardPiece_Edible cake = (BoardPiece_Edible) board.getPieceAt(x, y + 1);
 
+            if(transmitter != null && transmitter instanceof BoardPiece_FrozenCake&&
+                    !(cake instanceof BoardPiece_FrozenCake)) return false;
+
             if (cake.color == eater.color) {
-                if (!cake.getEaten(board, eater)) return true;
-                testLeft(x, y + 1, board, eater);
-                testRight(x, y + 1, board, eater);
-                testDown(x, y + 1, board, eater);
+                cake.getEaten(board, eater);
+                testLeft(x, y + 1, board, eater, cake);
+                testRight(x, y + 1, board, eater, cake);
+                testDown(x, y + 1, board, eater, cake);
                 return true;
             }
         }
@@ -82,15 +87,18 @@ class EatProbe {
      * @param eater The eater responsible for eating the cake if cake is found.
      * @return True if cake was eaten.
      */
-    private static boolean testLeft(int x, int y, Board board, BoardPiece_Eater eater) {
+    private static boolean testLeft(int x, int y, Board board, BoardPiece_Eater eater, BoardPiece_Edible transmitter) {
         if (x > 0 && board.getPieceAt(x-1, y) instanceof BoardPiece_Edible) {
             BoardPiece_Edible cake = (BoardPiece_Edible) board.getPieceAt(x - 1, y);
 
+            if(transmitter != null && transmitter instanceof BoardPiece_FrozenCake&&
+                    !(cake instanceof BoardPiece_FrozenCake)) return false;
+
             if (cake.color == eater.color) {
-                if (!cake.getEaten(board, eater)) return true;
-                testDown(x - 1, y, board, eater);
-                testLeft(x - 1, y, board, eater);
-                testUp(x - 1, y, board, eater);
+                cake.getEaten(board, eater);
+                testDown(x - 1, y, board, eater, cake);
+                testLeft(x - 1, y, board, eater, cake);
+                testUp(x - 1, y, board, eater, cake);
                 return true;
             }
         }
@@ -106,15 +114,18 @@ class EatProbe {
      * @param eater The eater responsible for eating the cake if cake is found.
      * @return True if cake was eaten.
      */
-    private static boolean testRight(int x, int y, Board board, BoardPiece_Eater eater){
+    private static boolean testRight(int x, int y, Board board, BoardPiece_Eater eater, BoardPiece_Edible transmitter){
         if (x < 5 && board.getPieceAt(x+1, y) instanceof BoardPiece_Edible){
             BoardPiece_Edible cake = (BoardPiece_Edible) board.getPieceAt(x + 1, y);
 
+            if(transmitter != null && transmitter instanceof BoardPiece_FrozenCake&&
+                    !(cake instanceof BoardPiece_FrozenCake)) return false;
+
             if(cake.color == eater.color){
-                if (!cake.getEaten(board, eater)) return true;
-                testRight(x+1, y, board, eater);
-                testDown(x+1, y, board, eater);
-                testUp(x+1, y, board, eater);
+                cake.getEaten(board, eater);
+                testRight(x+1, y, board, eater, cake);
+                testDown(x+1, y, board, eater, cake);
+                testUp(x+1, y, board, eater, cake);
                 return true;
             }
         }

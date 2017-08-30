@@ -65,7 +65,7 @@ class Board implements Iterable<BoardPiece> {
         if(gameOverState != GameOverState.Continue ) return;
         boolean zeroFood = true;
         for(BoardPiece piece : this)
-            if(piece instanceof BoardPiece_Cake) zeroFood = false;
+            if(piece instanceof BoardPiece_Edible) zeroFood = false;
         if(zeroFood)
             this.gameOverState = GameOverState.Win;
         else if(this.movesLeft < 1)
@@ -109,9 +109,10 @@ class Board implements Iterable<BoardPiece> {
     /**
      *
      */
-    void removeEatenCake() {
+    void removeDeadPieces() {
         for (BoardPiece piece : this) {
-            if (piece instanceof BoardPiece_EatenCake) {
+            if (piece instanceof BoardPiece_EatenCake ||
+                    (piece instanceof BoardPiece_FlyingFatso && ((BoardPiece_FlyingFatso) piece).isDead)) {
                 pieces[piece.boardX][piece.boardY] = null;
             }
         }
@@ -216,6 +217,7 @@ class Board implements Iterable<BoardPiece> {
     BoardPiece movePiece_ReturnPieceAtDestinyOrNull(int fromX, int fromY, int toX, int toY){
         if (pieces[fromX][fromY] != null && pieces[fromX][fromY].canDoMovement(this, toX, toY)){
             if (pieces[toX][toY] == null) {
+                if (pieces[fromX][fromY] instanceof BoardPiece_FlyingFatso) ((BoardPiece_FlyingFatso)pieces[fromX][fromY]).isDead=true;
                 pieces[fromX][fromY].boardX = toX;
                 pieces[fromX][fromY].boardY = toY;
                 pieces[toX][toY] = pieces[fromX][fromY];

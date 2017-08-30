@@ -15,203 +15,203 @@ class Levels_8 {
         switch (level) {
             case 1:
                 return new String[] {
+                        "   B  ",
                         "      ",
-                        "   w  ",
-                        "    w ",
+                        "   b  ",
+                        "   n  ",
                         "      ",
                         "      ",
-                        "      ",
-                        "1"
+                        "2"
                 };
             case 2:
                 return new String[] {
                         "      ",
-                        " nhtu ",
-                        " NHTE ",
+                        " bbb  ",
+                        " b b  ",
+                        " bbb  ",
                         "      ",
-                        "      ",
-                        "      ",
+                        " N    ",
                         "1"
                 };
             case 3:
                 return new String[] {
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        "     T",
+                        "bbb   ",
+                        "b rbrr",
+                        "bbrb r",
+                        "   rrr",
+                        "N     ",
+                        "2"
                 };
             case 4:
                 return new String[] {
                         "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        "hhhhhg",
+                        "nnnnh ",
+                        "bbg h ",
+                        "bbg h ",
+                        "G  B  ",
+                        "7"
                 };
             case 5:
                 return new String[] {
+                        "T   B ",
                         "      ",
+                        "nn  nn",
+                        "tt  tt",
                         "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        "R    N",
+                        "11"
                 };
             case 6:
                 return new String[] {
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        "h  B U",
+                        "g  G N",
+                        "n  R  ",
+                        "b  W  ",
+                        " rtyu ",
+                        " weY  ",
+                        "14"
                 };
             case 7:
                 return new String[] {
+                        "rbywrw",
+                        "b yrBg",
+                        "gbwy b",
+                        "  R  G",
                         "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        "TNUEH ",
+                        "11"
                 };
             case 8:
                 return new String[] {
                         "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        "bryrwr",
+                        "nnn nn",
+                        "nnnnnn",
+                        "  GYW ",
+                        "  BNR ",
+                        "15"
                 };
             case 9:
                 return new String[] {
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        "TYYggg",
+                        "RbbrUg",
+                        "Rb bgr",
+                        "ybyr r",
+                        "yHyrrr",
+                        "yyy  N",
+                        "4"
                 };
             case 10:
                 return new String[] {
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        "THTHTH",
+                        "RWRBGY",
+                        "  g   ",
+                        "r gy  ",
+                        "tbhy r",
+                        "rbgywr",
+                        "17"
                 };
             case 11:
                 return new String[] {
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        "Xwewwb",
+                        "wXwryg",
+                        "ewX   ",
+                        "wTNX  ",
+                        "GXWWX ",
+                        "Y     ",
+                        "30"
                 };
             case 12:
                 return new String[] {
+                        "NBBBN ",
                         "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        "  n   ",
+                        "  b   ",
+                        "  n   ",
+                        "  b   ",
+                        "3"
                 };
             case 13:
                 return new String[] {
+                        "rr  yy",
+                        " yyrrt",
+                        "XX    ",
+                        "RY   r",
                         "      ",
                         "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        "14"
                 };
             case 14:
                 return new String[] {
+                        "gggggg",
+                        "ghhhhg",
+                        "gggggg",
                         "      ",
                         "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        "    GH",
+                        "3"
                 };
             case 15:
                 return new String[] {
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        "ggg   ",
+                        "gRg   ",
+                        "ggghhh",
+                        "tttrrr",
+                        "   rGr",
+                        "   rrr",
+                        "4"
                 };
             case 16:
                 return new String[] {
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        "brbrbr",
+                        "rB   b",
+                        "b NT r",
+                        "r TN b",
+                        "bR  Br",
+                        "rbrbrb",
+                        "10"
                 };
             case 17:
                 return new String[] {
+                        "gygygy",
                         "      ",
+                        "G    U",
+                        "H    Y",
                         "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        "gygygy",
+                        "10"
                 };
             case 18:
                 return new String[] {
                         "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        " brwy ",
+                        " nnnn ",
+                        " uuuu ",
+                        " GWR  ",
+                        "BUNTYR",
+                        "10"
                 };
             case 19:
                 return new String[] {
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        "YgybrN",
+                        "RbrwyT",
+                        "BrbrbU",
+                        "GbryyE",
+                        "BrbybH",
+                        "RbgrgT",
+                        "15"
                 };
             case 20:
                 return new String[] {
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "      ",
-                        "1"
+                        " b  b ",
+                        "X b   ",
+                        "b   BX",
+                        "  b   ",
+                        "X    N",
+                        "B b  X",
+                        "6"
                 };
 
             default:

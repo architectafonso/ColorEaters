@@ -21,5 +21,7 @@ public class BoardPiece_FlyingFatso extends BoardPiece_Eater {
         return board.getPieceAt(goToX, goToY) == null;
     }
 
+    public boolean isDead = false;
+
 
 }
