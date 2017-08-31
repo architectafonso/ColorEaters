@@ -2,7 +2,7 @@ package com.empire_of_science.joao.coloreaters2;
 
 /**
  * Created by João on 23/02/2017.
- *
+ * Copyright João Afonso.
  * Animates the eaters. It waits for 1 second wit animationsState of pieces in 0, then moves them.
  */
 class BackgroundAnimator {

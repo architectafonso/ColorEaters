@@ -7,9 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
- *
- * CURRENT CODE REFERS TO LAST VERSION OF THIS APP, AND THE ARCHAIC WAY ANIMATIONS
- * WERE IMPLEMENTED.
+ *Copyright João Afonso.
  *
  * Represents the activity where the user can change the app settings.
  *
@@ -17,10 +15,7 @@ import android.widget.TextView;
  */
 public class Activity_SettingsActivity extends AppCompatActivity {
 
-    /**
-     * True if the animations are activated.
-     */
-    private boolean animationOn;
+
     /**
      * True if the sounds are not muted.
      */
@@ -39,30 +34,10 @@ public class Activity_SettingsActivity extends AppCompatActivity {
         // Gets sound gameOverState from preferences.
         soundOn = PreferenceControl.getSoundOnOff(this);
 
-        // gets animation gameOverState from preferences.
-        animationOn = PreferenceControl.getAnimationOnOff(this);
-
         // Sets the buttons and texts.
         setSoundButtonAndText();
-        setAnimationButtonAndText();
     }
 
-    /**
-     * Sets the animation button and text accordingly with the current gameOverState.
-     */
-    private void setAnimationButtonAndText(){
-        /*
-        THE ANIMATION BUTTON IS NOT SHOWING, MIGHT SHOW IN THE FUTURE AGAIN IF FOR INSTANCE THERE
-        IS A SETTING FOR CHOOSING BETWEEN GRABBING PIECES OR SELECT AND MOVE.
-        if (animationOn){
-            ((TextView)findViewById(R.id.animation)).setText(R.string.animation_on);
-            ((Button)findViewById(R.id.animation_button)).setText(R.string.turn_animation_off);
-        } else {
-            ((TextView)findViewById(R.id.animation)).setText(R.string.animation_off);
-            ((Button)findViewById(R.id.animation_button)).setText(R.string.turn_animation_on);
-        }
-        */
-    }
 
     /**
      * Sets the sound button and text accordingly with the current gameOverState.
@@ -85,15 +60,5 @@ public class Activity_SettingsActivity extends AppCompatActivity {
         soundOn = !soundOn;
         setSoundButtonAndText();
         PreferenceControl.setSoundOnOff(this, soundOn);
-    }
-
-    /**
-     * Changes the animation gameOverState, called when pressing sound button.
-     * @param view Animation button.
-     */
-    public void setAnimation(View view){
-        animationOn = !animationOn;
-        setAnimationButtonAndText();
-        PreferenceControl.setAnimationOnOff(this, animationOn);
     }
 }

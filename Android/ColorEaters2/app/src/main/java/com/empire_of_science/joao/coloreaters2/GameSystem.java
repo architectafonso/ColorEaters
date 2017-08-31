@@ -6,6 +6,7 @@ import com.color.eaters.Levels;
 
 /**
  * Created by João on 06/12/2016.
+ * Copyright João Afonso.
  *
  * GameSystem is used to not crowd the view too much.
  *

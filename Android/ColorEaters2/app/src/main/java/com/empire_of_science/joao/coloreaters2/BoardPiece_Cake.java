@@ -2,6 +2,7 @@ package com.empire_of_science.joao.coloreaters2;
 
 /**
  * Created by João on 31/10/2016.
+ * Copyright João Afonso.
  * Represents the BoardPiece_Cake.
  */
 class BoardPiece_Cake extends BoardPiece_Edible {

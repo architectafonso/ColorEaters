@@ -6,6 +6,7 @@ import android.graphics.Rect;
 
 /**
  * Created by João on 19/11/2016.
+ * Copyright João Afonso.
  * Contains all of the information about the canvas coordinates of different points of the board
  * and it's used to get coordinates to draw the content of the board, and to check witch cell
  * corresponds to certain canvas coordinates.

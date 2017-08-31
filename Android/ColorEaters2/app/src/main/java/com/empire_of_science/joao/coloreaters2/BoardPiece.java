@@ -3,6 +3,7 @@ package com.empire_of_science.joao.coloreaters2;
 
 /**
  * Created by João on 14/08/2015.
+ * Copyright João Afonso.
  * This abstract class represents every board piece of any kind.
  */
 abstract class BoardPiece {

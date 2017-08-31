@@ -7,6 +7,7 @@ import android.graphics.Rect;
 
 /**
  * Created by João on 23/02/2017.
+ * Copyright João Afonso.
  *
  * Handles the drawing of the game area.
  * Uses a BoardDimensions object to resolve where to draw the elements, and Bitmaps object to hold

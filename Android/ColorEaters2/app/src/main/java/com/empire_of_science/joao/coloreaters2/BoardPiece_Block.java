@@ -2,6 +2,7 @@ package com.empire_of_science.joao.coloreaters2;
 
 /**
  * Created by João on 30/09/2016.
+ * Copyright João Afonso.
  * Represents the 'X' pieces that do not move during the game.
  */
 class BoardPiece_Block extends BoardPiece {

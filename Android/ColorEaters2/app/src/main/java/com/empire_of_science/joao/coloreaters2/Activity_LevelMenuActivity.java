@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 /**
+ * Copyright João Afonso.
  * Level selection menu.
  */
 public class Activity_LevelMenuActivity extends AppCompatActivity {

@@ -2,6 +2,7 @@ package com.empire_of_science.joao.coloreaters2;
 
 /**
  * Created by João on 11/01/2017.
+ * Copyright João Afonso.
  */
 
 class BoardPiece_EatenCake extends BoardPieceWithColor {

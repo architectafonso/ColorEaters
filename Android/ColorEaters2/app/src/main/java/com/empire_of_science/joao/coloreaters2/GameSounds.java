@@ -8,6 +8,7 @@ import android.preference.PreferenceManager;
 
 /**
  * Created by João on 29/09/2016.
+ * Copyright João Afonso.
  *
  * This class is a singleton and has methods to play any sound.
  * If sounds change only this class needs to be changed.

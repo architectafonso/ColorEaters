@@ -30,11 +30,11 @@
 
 
     <!-- Help -->
-    <string name="help1">Drag an eater or cake to move it</string>
-    <string name="help2">You can move it to a cell right next to it (no diagonals), if it is occupied then you will swap the two objects!</string>
-    <string name="help3">The eaters will eat any continuous group of cakes of their color they touch</string>
-    <string name="help4">Your goal is to eat all the cake in the given number of moves</string>
-    <string name="help5">The red X can\'t be moved, go around it!</string>
+    <string name="help1">Drag an eater or cake to move it. You can move it to a cell right next to it (no diagonals), if it is occupied then you will swap the two objects!</string>
+    <string name="help2">The eaters will eat any continuous group of cakes of their color they touch. Your goal is to eat all the cake in the given number of moves</string>
+    <string name="help3">The red X can\'t be moved, go around it!</string>
+    <string name="help4">Flying Fatsos can move anywhere that\'s empty, but then they disappear!</string>
+    <string name="help5">Frozen Cake will unfrozen when eaten, but isn\'t eaten right away, and prevents the eating to spread!</string>
 
     <!-- About -->
     <string name="about1">This game was made in Portugal by João Afonso</string>

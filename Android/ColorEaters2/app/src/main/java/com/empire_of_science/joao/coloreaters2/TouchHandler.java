@@ -5,6 +5,7 @@ import android.view.MotionEvent;
 
 /**
  * Created by João on 12/12/2016.
+ * Copyright João Afonso.
  * Handles the touch events.
  */
 

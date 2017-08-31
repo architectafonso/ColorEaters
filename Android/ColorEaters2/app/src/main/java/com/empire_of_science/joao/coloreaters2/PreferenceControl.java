@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 
 /**
  * Created by João on 10/10/2016.
+ * Copyright João Afonso.
  *
  * This class contains the methods to read and write to preferences.
  *

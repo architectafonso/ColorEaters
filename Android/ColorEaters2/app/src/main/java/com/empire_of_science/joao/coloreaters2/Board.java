@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 /**
  * Created by João on 30/09/2016.
+ * Copyright João Afonso.
  * Represents the actual table of cells and the game pieces in it.
  * This class has information about the gameOverState of the game board.
  */
@@ -107,7 +108,8 @@ class Board implements Iterable<BoardPiece> {
     }
 
     /**
-     *
+     * Removes all the pieces that are dead, flying fatsos with isDead == true and Eaten Cake.
+     * This happens after animation of eating so that they show during the animation.
      */
     void removeDeadPieces() {
         for (BoardPiece piece : this) {
@@ -129,7 +131,7 @@ class Board implements Iterable<BoardPiece> {
     }
 
     /**
-     * This method causes every BoardPiece_NormalEater in the board to eat.
+     * This method causes every BoardPiece_Eater in the board to eat.
      * @return true if there is cake to be eaten.
      */
     boolean eat(){
@@ -153,61 +155,9 @@ class Board implements Iterable<BoardPiece> {
     }
 
     /**
-     * Makes a BoardPiece_Cake to be replaced with BoardPiece_EatenCake with its eater filed pointing
-     * to the respective eater.
-     * @param x Board x coordinate of the cake to be eaten.
-     * @param y Board y coordinate of the cake to be eaten.
-     * @param eater Eater of the cake.
-     */
-    void eatACake(int x, int y, BoardPiece eater){
-        if ( !( pieces[x][y] instanceof BoardPiece_Cake ) ) {
-            throw new GameException("Try to eat piece that's not cake @: " + x + ", " + y);
-        }
-        pieces[x][y] = new BoardPiece_EatenCake( (BoardPiece_Cake)(pieces[x][y]), eater );
-    }
-
-    /**
-     * THIS METHOD IS NOT USED AS IN THE NEW VERSION THERE IS NO SELECTION OF CELLS, BUT IT IS
-     * LEFT HERE FOR THE POSSIBILITY OF IN THE FUTURE NEW SELECTION OF CELL IS IMPLEMENTED AS
-     * AN OPTION OVER DIRECTLY MOVE PIECES WITH FINGER.
-     *
-     * Selects the board cell at (x,y) if that is possible depending on which piece is there if any.
-     * @param x Cell x coordinate.
-     * @param y Cell y coordinate.
-     * @return True if the cell was successfully selected.
-     */
-    boolean trySelectCell(int x, int y){
-        if (pieces[x][y] != null && (pieces[x][y].isSelectable(this))) {
-            // If there was a movable piece in the selected cell selects it and invalidates.
-            hasSelected = true;
-            selectedX = x;
-            selectedY = y;
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * NOT IN USE; SAME AS trySelectCell.
-     *
-     * Moves the selected piece to the cell at the specified coordinates, if possible, and in any
-     * case sets hasSelected = false.
-     * @param toX Cell coordinates where to move the selected piece.
-     * @param toY  Cell coordinates where to move the selected piece.
-     * @return True if move was successful.
-     */
-    boolean attemptMovementOfSelectedAndDeselect( int toX, int toY){
-        hasSelected = false;
-        if (pieces[selectedX][selectedY] != null && pieces[selectedX][selectedY].canDoMovement(this, toX, toY)){
-            moveSelectedPiece(toX, toY);
-            return true;
-        }
-        return false;
-    }
-
-    /**
      * Moves one piece to another cell, and swaps if there was another piece there, returns that
      * other piece so that its move can be animated.
+     * Also, it kills a flying fatso if it is moving.
      * @param fromX X coordinate of the cell of the piece to be moved.
      * @param fromY Y coordinate of the cell of the piece to be moved.
      * @param toX X coordinate of the cell the piece is supposed to move to.
@@ -217,7 +167,9 @@ class Board implements Iterable<BoardPiece> {
     BoardPiece movePiece_ReturnPieceAtDestinyOrNull(int fromX, int fromY, int toX, int toY){
         if (pieces[fromX][fromY] != null && pieces[fromX][fromY].canDoMovement(this, toX, toY)){
             if (pieces[toX][toY] == null) {
-                if (pieces[fromX][fromY] instanceof BoardPiece_FlyingFatso) ((BoardPiece_FlyingFatso)pieces[fromX][fromY]).isDead=true;
+                // Kills a lying fatso as it moves.
+                if (pieces[fromX][fromY] instanceof BoardPiece_FlyingFatso)
+                    ((BoardPiece_FlyingFatso)pieces[fromX][fromY]).isDead=true;
                 pieces[fromX][fromY].boardX = toX;
                 pieces[fromX][fromY].boardY = toY;
                 pieces[toX][toY] = pieces[fromX][fromY];

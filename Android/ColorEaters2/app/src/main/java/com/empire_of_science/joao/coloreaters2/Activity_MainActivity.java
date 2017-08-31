@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 /**
+ * Copyright João Afonso.
  * Represents the entry screen of the app.
  */
 public class Activity_MainActivity extends Activity {

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 /**
+ * Copyright João Afonso.
  * Activity that allows player to chose the level package that contains the wanted level.
  */
 public class Activity_MainLevelMenuActivity extends AppCompatActivity {

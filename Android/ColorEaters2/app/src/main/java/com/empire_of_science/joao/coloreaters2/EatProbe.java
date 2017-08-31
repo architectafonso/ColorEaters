@@ -2,7 +2,7 @@ package com.empire_of_science.joao.coloreaters2;
 
 /**
  * Created by João on 31/10/2016.
- *
+ * Copyright João Afonso.
  */
 
 class EatProbe {
@@ -26,10 +26,13 @@ class EatProbe {
     /**
      * Tests above specified cell, if there is an edible of the right color there, eats it,
      * and might test from there in 3 directions.
+     * Also, stops the eating if it is a frozen cake trying to eat normal cake.
      * @param x Cell coordinate above which the test will occur.
      * @param y Cell coordinate above which the test will occur.
      * @param board The Board to test.
      * @param eater The eater responsible for eating the cake if cake is found.
+     * @param transmitter The piece that is eating this one, that has already been eaten, if there
+     *                    is one.
      * @return True if cake was eaten.
      */
     private static boolean testUp(int x, int y, Board board, BoardPiece_Eater eater, BoardPiece_Edible transmitter){
@@ -54,10 +57,13 @@ class EatProbe {
     /**
      * Tests below specified cell, if there is cake of the right color there, it swaps it for
      * eaten cake and tests from there in 3 directions.
+     * Also, stops the eating if it is a frozen cake trying to eat normal cake.
      * @param x Cell coordinate below which the test will occur.
      * @param y Cell coordinate below which the test will occur.
      * @param board The Board to test.
      * @param eater The eater responsible for eating the cake if cake is found.
+     * @param transmitter The piece that is eating this one, that has already been eaten, if there
+     *                    is one.
      * @return True if cake was eaten.
      */
     private static boolean testDown(int x, int y, Board board, BoardPiece_Eater eater, BoardPiece_Edible transmitter){
@@ -81,10 +87,13 @@ class EatProbe {
     /**
      * Tests cell to the left of the specified cell, if there is cake of the right color there, it swaps it for
      * eaten cake and tests from there in 3 directions.
+     * Also, stops the eating if it is a frozen cake trying to eat normal cake.
      * @param x Cell coordinate to the right to  the one the test will occur.
      * @param y Cell coordinate to the right to  the one the test will occur.
      * @param board The Board to test.
      * @param eater The eater responsible for eating the cake if cake is found.
+     * @param transmitter The piece that is eating this one, that has already been eaten, if there
+     *                    is one.
      * @return True if cake was eaten.
      */
     private static boolean testLeft(int x, int y, Board board, BoardPiece_Eater eater, BoardPiece_Edible transmitter) {
@@ -108,10 +117,13 @@ class EatProbe {
     /**
      * Tests cell to the right of the specified cell, if there is cake of the right color there, it swaps it for
      * eaten cake and tests from there in 3 directions.
+     * Also, stops the eating if it is a frozen cake trying to eat normal cake.
      * @param x Cell coordinate to the left to  the one the test will occur.
      * @param y Cell coordinate to the left to  the one the test will occur.
      * @param board The Board to test.
      * @param eater The eater responsible for eating the cake if cake is found.
+     * @param transmitter The piece that is eating this one, that has already been eaten, if there
+     *                    is one.
      * @return True if cake was eaten.
      */
     private static boolean testRight(int x, int y, Board board, BoardPiece_Eater eater, BoardPiece_Edible transmitter){

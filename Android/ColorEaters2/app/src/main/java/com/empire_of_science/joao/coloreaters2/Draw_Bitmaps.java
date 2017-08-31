@@ -6,6 +6,7 @@ import android.graphics.Rect;
 
 /**
  * Created by João on 10/10/2016.
+ * Copyright João Afonso.
  * Composes GameDrawer having all the bitmaps.
  */
 class Draw_Bitmaps {

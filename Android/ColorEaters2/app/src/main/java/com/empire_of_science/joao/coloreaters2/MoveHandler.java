@@ -2,9 +2,25 @@ package com.empire_of_science.joao.coloreaters2;
 
 /**
  * Created by João on 22/02/2017.
- *
+ * Copyright João Afonso.
+ * This class is used to move the pieces in an animated way, after the touch handler requests that
+ * move.
+ * Also animates eating and calls the eating to happen.
  */
 class MoveHandler {
+
+    /**
+     * Actually moves the pieces in Board and prepares the animation that slowlly moves
+     * pieces around.
+     * Also decrements the number os moves and eats.
+     * @param toX Destiny of piece.
+     * @param toY Destiny of piece.
+     * @param board Board object.
+     * @param pieceBeingMoved The piece the user wants to move.
+     * @param touchHandler The touch handler that called this.
+     * @param gameView GameView object.
+     * @param gameSystem The GameSystem of this GameView.
+     */
     static void doTheMove(int toX, int toY, Board board, BoardPiece pieceBeingMoved,
                           TouchHandler touchHandler, GameView gameView, GameSystem gameSystem) {
         BoardPiece p =  board.movePiece_ReturnPieceAtDestinyOrNull(
@@ -35,6 +51,11 @@ class MoveHandler {
         gameSystem.endIfNecessary();
     }
 
+    /**
+     * Animates the eating process, assuming eating had previously happened at the level of the Board,
+     * leaving eaten pieces with pointers to their eaters.
+     * @param board The board which pieces will be animated.
+     */
     private static void animateEating(Board board){
         for (BoardPiece piece : board){
             if (piece instanceof BoardPiece_EatenCake){
@@ -59,6 +80,12 @@ class MoveHandler {
         }
     }
 
+    /**
+     * Animates the movement of a piece to a empty location.
+     * @param toX X coordinate of destiny.
+     * @param toY Y coordinate of destiny.
+     * @param pieceBeingMoved Piece that moves.
+     */
     private static void animateMove(int toX, int toY, BoardPiece pieceBeingMoved){
         int destinyX = (toX * 1000) / 6;
         int destinyY = (toY * 1000) / 6;
@@ -76,6 +103,13 @@ class MoveHandler {
     }
 
 
+    /**
+     * Animates the swapping of two pieces.
+     * @param toX X coordinate of destiny.
+     * @param toY Y coordinate of destiny.
+     * @param swapPiece Piece being swapped.
+     * @param pieceBeingMoved 'Main' piece being moved.
+     */
     private static void animateSwap(int toX, int toY, BoardPiece swapPiece, BoardPiece pieceBeingMoved){
 
 

@@ -10,6 +10,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 /**
+ * Copyright João Afonso.
  * Requirements:
  * The activity that hosts this view must be an Activity_GameActivity or one that extends it.
  * It also needs to  set the numberOfMoves, the level pieces and animationOn.

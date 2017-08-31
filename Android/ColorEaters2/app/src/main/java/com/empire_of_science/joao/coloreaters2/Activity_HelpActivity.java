@@ -7,6 +7,7 @@ import android.view.MenuItem;
 
 
 /**
+ * Copyright João Afonso.
  * Help screen where the instructions are shown.
  * Class unchanged.
  */

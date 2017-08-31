@@ -2,10 +2,11 @@ package com.empire_of_science.joao.coloreaters2;
 
 /**
  * Created by João on 24/08/2017.
+ * Copyright João Afonso.
  */
 
-public abstract class BoardPiece_Eater extends BoardPieceWithColor{
-    public BoardPiece_Eater(int x, int y, Colors color){
+abstract class BoardPiece_Eater extends BoardPieceWithColor{
+    BoardPiece_Eater(int x, int y, Colors color){
         super(x, y, color);
     }
 

@@ -30,11 +30,11 @@
     <string name="level_package">Packet de Niveaux </string>
 
     <!-- Help -->
-    <string name="help1">Faites glisser un gâteau ou glouton</string>
-    <string name="help2">Vous pouvez le déplacer vers une cellule juste à côté (pas en diagonale),  si le lieu est occupé las pièces échange des lieux</string>
-    <string name="help3">Les gloutons mangent tout le gâteau de leur couleur qui est dans un groupe qu\'ils touchent</string>
-    <string name="help4">Le but est de manger tout le gâteau dans le nombre de coups disponibles</string>
-    <string name="help5">La pièce "X" ne peut être sélectionné ou déplacé</string>
+    <string name="help1">Faites glisser un gâteau ou glouton. Vous pouvez le déplacer vers une cellule juste à côté (pas en diagonale),  si le lieu est occupé las pièces échange des lieux</string>
+    <string name="help2">Les gloutons mangent tout le gâteau de leur couleur qui est dans un groupe qu\'ils touchent. Le but est de manger tout le gâteau dans le nombre de coups disponibles</string>
+    <string name="help3">La pièce "X" ne peut être sélectionné ou déplacé</string>
+    <string name="help4">Flying Fatsos peut se déplacer n\'importe où, il est vide, mais alors ils disparaissent!</string>
+    <string name="help5">Le Gâteau Frozen sera dégelé lorsqu\'il est mangé, mais il n\'est pas mangé tout de suite, et empêche les aliments de se propager!</string>
 
     <!-- About -->
     <string name="about1">Ce jeu a été faite au Portugal par João Afonso</string>

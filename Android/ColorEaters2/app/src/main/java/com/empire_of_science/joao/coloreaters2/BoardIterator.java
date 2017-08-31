@@ -5,6 +5,7 @@ import java.util.NoSuchElementException;
 
 /**
  * Created by João on 20/11/2016.
+ * Copyright João Afonso.
  * Iterates over the Board to return every BoardPiece in the game.
  */
 class BoardIterator implements Iterator<BoardPiece> {

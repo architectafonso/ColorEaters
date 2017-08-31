@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 /**
+ * Copyright João Afonso.
  * The about screen where credits and info about the gameSystem is shown.
  */
 public class Activity_AboutActivity extends Activity {

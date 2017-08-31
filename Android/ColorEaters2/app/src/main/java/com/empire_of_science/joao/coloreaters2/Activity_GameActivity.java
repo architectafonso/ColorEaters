@@ -8,6 +8,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ * Copyright João Afonso.
+ */
 public class Activity_GameActivity extends Activity {
 
 
@@ -66,16 +69,10 @@ public class Activity_GameActivity extends Activity {
         // Sets the number of moves to display. Actual ID depends on the layout, could be
         // moves_left or moves_left_large_3, because in tablets in landscape the number of moves
         // uses 3 text views.
-        TextView text = (TextView)findViewById(R.id.moves_left);           //gets text view
-
-        // Sets the level text view.
         TextView lev = (TextView)findViewById(R.id.level);
         String s = getResources().getString(R.string.level_indicator);
         lev.setText(s + " " + levelPackage + "/" + level);
 
-        // Sets the animation on or off.
-        // CURRENTLY ANIMATION IS ALWAYS ON
-        //gameView.animationOn = PreferenceControl.getAnimationOnOff(this);
     }
 
     /**

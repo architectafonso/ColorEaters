@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 /**
+ * Copyright João Afonso.
  * Activity shown when the player loses the gameSystem.
  * Allows restart the gameSystem and return to levels menu of this package.
  */
